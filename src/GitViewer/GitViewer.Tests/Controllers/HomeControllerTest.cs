@@ -1,8 +1,10 @@
 ﻿using System.Web.Mvc;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GitViewer.Controllers;
+using Moq;
+using GitViewer.Services;
 
-namespace GitViewer.Tests.Controllers
+namespace GitViewer.Tests.Unit.Controllers
 {
     [TestClass]
     public class HomeControllerTest
@@ -10,8 +12,9 @@ namespace GitViewer.Tests.Controllers
         [TestMethod]
         public void Index()
         {
+            var mockGithubService = new Mock<IGithubUserService>();
             // Arrange
-            HomeController controller = new HomeController();
+            HomeController controller = new HomeController(mockGithubService.Object);
 
             // Act
             ViewResult result = controller.Index() as ViewResult;
