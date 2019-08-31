@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GitViewer.Controllers;
 using Moq;
 using GitViewer.Services;
+using GitViewer.Domain.Logging;
 
 namespace GitViewer.Tests.Unit.Controllers
 {
@@ -13,11 +14,12 @@ namespace GitViewer.Tests.Unit.Controllers
         public void Index()
         {
             var mockGithubService = new Mock<IGithubUserService>();
+            var mockLogger = new Mock<ILogger>();
             // Arrange
-            HomeController controller = new HomeController(mockGithubService.Object);
+            HomeController controller = new HomeController(mockGithubService.Object, mockLogger.Object);
 
             // Act
-            ViewResult result = controller.Index() as ViewResult;
+            ViewResult result = controller.Index().GetAwaiter().GetResult() as ViewResult;
 
             // Assert
             Assert.IsNotNull(result);

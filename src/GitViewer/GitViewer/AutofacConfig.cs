@@ -1,6 +1,8 @@
 ﻿using Autofac;
 using Autofac.Integration.Mvc;
+using GitViewer.Domain.Logging;
 using GitViewer.Repositories;
+using GitViewer.Repositories.Clients;
 using GitViewer.Services;
 using System.Net.Http;
 using System.Reflection;
@@ -21,6 +23,8 @@ namespace GitViewer
 
             builder.RegisterType<GithubUserService>().As<IGithubUserService>();
             builder.RegisterType<GitHubAPIDataRepository>().As<IGitHubDataRepository>();
+            builder.RegisterType<SimpleLogger>().As<ILogger>();
+            builder.RegisterType<BasicHttpClient>().As<IHttpClient>();
 
 
             var container = builder.Build();

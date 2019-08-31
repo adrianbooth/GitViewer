@@ -31,6 +31,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
+    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
     <Reference Include="System.Xml.Linq" />
@@ -41,6 +44,8 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Clients\BasicHttpClient.cs" />
+    <Compile Include="Clients\IHttpClient.cs" />
     <Compile Include="Entities\RepositoryLicenseEntity.cs" />
     <Compile Include="Entities\UserEntity.cs" />
     <Compile Include="Entities\RepositoryEntity.cs" />
@@ -48,6 +53,15 @@
     <Compile Include="GitHubAPIDataRepository.cs" />
     <Compile Include="IGitHubDataRepository.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GitViewer.Domain\GitViewer.Domain.csproj">
+      <Project>{383fcaef-4a22-42b9-824c-19e0f231c289}</Project>
+      <Name>GitViewer.Domain</Name>
+    </ProjectReference>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="packages.config" />
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>
