@@ -1,8 +1,9 @@
 ﻿using GitViewer.Domain.Logging;
-using GitViewer.Models;
 using GitViewer.Services;
 using System.Threading.Tasks;
 using System.Web.Mvc;
+using GitViewer.Domain.Models;
+using GitViewer.ViewModels;
 
 namespace GitViewer.Controllers
 {
@@ -27,7 +28,17 @@ namespace GitViewer.Controllers
         [ValidateAntiForgeryToken]
         public async Task<ActionResult> Index(GitUserSearchViewModel model)
         {
-            return View(new GitUserViewModel());
+            GithubUser user = new GithubUser();
+
+            if (ModelState.IsValid)
+            {
+                user = await _githubUserService.GetGithubUser(model.GitHandle);
+            }
+
+            return View(new GitUserViewModel
+            {
+                User = user
+            });
         }
     }
 }

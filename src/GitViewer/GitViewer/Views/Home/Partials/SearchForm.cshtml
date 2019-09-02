@@ -1,0 +1,10 @@
+﻿@model GitViewer.ViewModels.GitUserSearchViewModel
+
+@using (Html.BeginForm(FormMethod.Post))
+{
+    @Html.AntiForgeryToken()
+    <p> @Html.LabelFor(x => x.GitHandle)</p>
+    <p> @Html.TextBoxFor(x => x.GitHandle)</p>
+    <p> @Html.ValidationMessageFor(x => x.GitHandle)</p>
+    <p><input type="submit" value="Search" /></p>
+}

@@ -1,16 +1,37 @@
-﻿<div class="row">
+﻿@using GitViewer.ViewModels
+@model GitViewer.ViewModels.GitUserViewModel
+<div class="row">
     <div class="col-md-6">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
+        <h2>Search for a git handle</h2>
+        @Html.Partial("Partials/SearchForm", new GitUserSearchViewModel())
     </div>
     <div class="col-md-6">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
+        @if (Model.HasData())
+        {
+        <article class="user">
+
+            <img src="@Model.User.Avatar" style="float: right; width: 100px;" />
+            <h2>@Model.User.Username</h2>
+            <p>@Model.User.Location</p>
+            <h3>Repositories</h3>
+            @if (Model.User.Repositories.Any())
+            {
+            <ul>
+                @foreach (var repository in @Model.User.Repositories)
+                {
+                    <li>@repository.Name - (@repository.StarGazers stargazers)</li>
+                }
+            </ul>
+            }
+            else
+            {
+            <p>no repositories found</p>
+            }
+        </article>
+        }
+        else
+        {
+            <h2>User not found</h2>
+        }
     </div>
 </div>
