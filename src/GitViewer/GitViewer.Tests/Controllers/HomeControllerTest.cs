@@ -1,11 +1,11 @@
 ﻿using System.Web.Mvc;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using GitViewer.Controllers;
-using Moq;
-using GitViewer.Services;
 using GitViewer.Domain.Logging;
+using GitViewer.Services;
+using Microsoft.VisualStudio.TestTools.UnitTesting;
+using Moq;
 
-namespace GitViewer.Tests.Unit.Controllers
+namespace GitViewer.Tests.Controllers
 {
     [TestClass]
     public class HomeControllerTest
