@@ -2,15 +2,15 @@
 using GitViewer.Controllers;
 using GitViewer.Domain.Logging;
 using GitViewer.Services;
-using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
+using NUnit.Framework;
 
 namespace GitViewer.Tests.Controllers
 {
-    [TestClass]
+    [TestFixture]
     public class HomeControllerTest
     {
-        [TestMethod]
+        [Test]
         public void Index()
         {
             var mockGithubService = new Mock<IGithubUserService>();
