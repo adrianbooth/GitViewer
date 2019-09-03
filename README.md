@@ -1,5 +1,5 @@
 # GitViewer
-Simple mvc site to load user info from github api
+GitViewer is a simple mvc site to load user info from github api.
 
 ## Prerequisites
 To run the web application you will need .NET Framework Runtime v4.7.2 
