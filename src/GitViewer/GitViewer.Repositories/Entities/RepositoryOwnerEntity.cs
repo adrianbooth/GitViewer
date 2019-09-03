@@ -1,5 +1,9 @@
 ﻿namespace GitViewer.Repositories.Entities
 {
+    /// <summary>
+    /// If this were a long lived application I would use [JsonProperty]
+    /// attribute with the response property and map it to a Pascal case .net style property to ease any mapping 
+    /// </summary>
     public class RepositoryOwnerEntity
     {
         public string login { get; set; }
